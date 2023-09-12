@@ -6,6 +6,7 @@ import path from 'path';
 // internal imports 
 import connectToDatabase from './config/databaseConnect';
 import errorHandler from './middleware/errorHandler/errorHandler';
+import userRoute from './router/user/userRoute';
 
 const router = Router();
 const app = express();
@@ -28,13 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // router configuration
-app.get("/", (req: Request, res: Response) => {
-    console.log("We get all users list");
-  
-    // Send a response back to the client
-    res.status(200).json({ message: "All users list retrieved successfully" });
-  });
-
+app.use("/api/v1", userRoute)
 
 // error handling
 app.use(errorHandler)
