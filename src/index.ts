@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // router configuration
-app.use("/api/v1", userRoute)
+app.use("/api/v1/user", userRoute)
 
 // error handling
 app.use(errorHandler)
