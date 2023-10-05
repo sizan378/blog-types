@@ -20,6 +20,11 @@ const userValidationHandler = function (req: Request, res: Response, next: NextF
     const mappedError = error.mapped()
     
     if (Object.keys(mappedError).length===0){
-        
+        next()
+    } else {
+        res.status(500).json({message: mappedError})
     }
 }
+
+
+export { userLoginValidator, userValidationHandler }
